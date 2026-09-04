@@ -4,6 +4,7 @@ use crate::cmds::cmds;
 
 mod errors;
 mod cmds;
+mod models;
 
 fn main() {
     let mut input = String::new();
@@ -20,9 +21,8 @@ fn main() {
             break;
         }
 
-        if cmds(input.trim()).is_err() {
-            eprintln!("Error executing command. Please try again");
-            continue;
+        if let Err(e) = cmds(input.trim())  {
+            e.print_stack_trace();
         }
 
         input.clear();
