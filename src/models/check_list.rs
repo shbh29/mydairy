@@ -1,5 +1,6 @@
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone)]
+#[derive(Deserialize, Serialize, Clone, Debug)]
 pub struct CheckList {
     task: String,
     is_done: bool,
@@ -13,3 +14,4 @@ impl CheckList {
         }
     }
 }
+

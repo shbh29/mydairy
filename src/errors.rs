@@ -6,6 +6,7 @@ pub enum Errors {
     InvalidCmd,
     InvalidFileCreation(std::io::Error),
     InvalidFileWriteOperation(std::io::Error),
+    InvalidSerializeOp,
 }
 
 impl Errors {
@@ -17,7 +18,8 @@ impl Errors {
             },
             Errors::InvalidCmd |
             Errors::InvalidInput |
-            Errors::IOError => {
+            Errors::IOError |
+            Errors::InvalidSerializeOp => {
                 eprintln!("Error performing operation: {:?}", self);
             }
         };
