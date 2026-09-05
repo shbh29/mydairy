@@ -28,7 +28,7 @@ impl FreeWrite {
 impl HandleFreeWrite for Cmds {
     fn handle_free_write(&self) -> Result<bool, Errors> {
         println!("Start writing, and Empty line would stop writing mode");
-        let mut je = JournalEntry::load();
+        let mut je = JournalEntry::load()?;
         let existing_fw = je.free_write();
         println!("Existing: {}", existing_fw.content);
         let mut file_content = String::new();

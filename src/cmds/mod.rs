@@ -14,7 +14,7 @@ pub fn cmds(input: &str) -> Result<bool, Errors> {
     match filter(&input) {
         Ok(cmd) => match cmd {
             Cmds::FreeWrite => cmd.handle_free_write(),
-            Cmds::Intentions => Cmds::handle_intentions(),
+            Cmds::Intentions(inpts) => Cmds::handle_intentions(inpts),
         },
         Err(e) => {
             println!("Error: {:?}", e);
@@ -25,14 +25,16 @@ pub fn cmds(input: &str) -> Result<bool, Errors> {
 
 pub enum Cmds {
     FreeWrite,
-    Intentions
+    Intentions(Vec<String>)
 }
 
 /* Objective of this method is to select the Cmd from the first string. */
 fn filter(input: &str) -> Result<Cmds, Errors> {
-    let inpts: Vec<_> = input.split(" ").collect();
+    let inpts: Vec<String> = input.split(" ")
+            .map(|s| String::from(s))
+            .collect();
     println!("inpts: {:?}", inpts);
-
+    
     let cmd : Option<_> = inpts.get(0);
 
     match cmd {
@@ -40,7 +42,7 @@ fn filter(input: &str) -> Result<Cmds, Errors> {
             Ok(Cmds::FreeWrite)
         },
         Some(cmd) if *cmd == "in" => {
-            Ok(Cmds::Intentions)
+            Ok(Cmds::Intentions(inpts))
         },
         None => {
             Err(Errors::InvalidInput)

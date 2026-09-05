@@ -13,5 +13,18 @@ impl CheckList {
             is_done: false,
         }
     }
+    pub fn with_task(task: String) -> CheckList {
+        CheckList { task, is_done: false }
+    }
+    pub fn is_done(&self) -> bool {
+       self.is_done
+    }
+    pub fn toggle_done(&mut self) -> bool {
+        self.is_done = !self.is_done;
+        true
+    }
+    pub fn task(&self) -> &String {
+        &self.task
+    }
 }
 
