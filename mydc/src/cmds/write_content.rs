@@ -2,7 +2,7 @@ use crate::cmds::Cmds;
 use std::fs::File;
 use std::io::BufWriter;
 use std::io::Write;
-use crate::errors::Errors;
+use mydlib::errors::Errors;
 
 /*Using this trait should save the content to the current file.*/
 pub trait WriteContent {

@@ -1,7 +1,6 @@
-use crate::errors::Errors;
+use mydlib::errors::Errors;
 use crate::cmds::free_write::HandleFreeWrite;
 use crate::cmds::intentions::HandleIntentions;
-use crate::models::check_list::CheckList;
 
 pub mod free_write;
 mod write_content;

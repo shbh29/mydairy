@@ -1,12 +1,15 @@
-use rand::Rng;
 use chrono::{NaiveDate, Local};
-use crate::cmds::intentions::Intentions;
-use crate::cmds::free_write::FreeWrite;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::BufReader;
 use crate::errors::Errors;
 use std::io::Read;
+use crate::models::free_write::FreeWrite;
+use crate::models::intentions::Intentions;
+
+
+
+
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct JournalEntry {

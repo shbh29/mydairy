@@ -2,9 +2,7 @@ use std::io;
 use std::io::Write;
 use crate::cmds::cmds;
 
-mod errors;
 mod cmds;
-mod models;
 
 fn main() {
     let mut input = String::new();

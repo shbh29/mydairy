@@ -2,3 +2,5 @@
 myds/target
 mydc/target
 mydc/current.json
+**/*.swp
+mydlib/target
